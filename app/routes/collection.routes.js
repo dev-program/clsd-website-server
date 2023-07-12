@@ -20,7 +20,7 @@ module.exports = function(app) {
 // Retrieve all Tutorials
   app.get(
     "/api/collection",
-    [authJwt.verifyToken, authJwt.isModeratorOrAdmin ,  ],
+   // [authJwt.verifyToken, authJwt.isModeratorOrAdmin ,  ],
     controller.findAll
   );
 
