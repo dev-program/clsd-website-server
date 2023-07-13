@@ -13,7 +13,12 @@ exports.create = (req, res) => {
       degree: req.body.degree,
       adviser: req.body.adviser,
       year: req.body.year,
-      published: req.body.published ? req.body.published : true
+      student: req.body.student,
+
+      types: req.body.types,
+
+
+      published: req.body.published ? req.body.published : false
     
     };
     // Save Tutorial in the database
