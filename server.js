@@ -23,7 +23,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 
-
 // Allow CORS headers
 app.use(function(req, res, next) {
   res.setHeader("Permissions-Policy", ""); // Remove the unrecognized feature
@@ -35,7 +34,7 @@ app.use(function(req, res, next) {
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to CLSD application." });
 });
-
+/*
 const multer = require('multer');
 app.use(fileUpload());
 
@@ -46,7 +45,7 @@ app.post('/api/items', upload.single('image'), async (req, res) => {
   const item = await Item.create({ name, description, image });
   res.json({ id: item.id });
 });
-
+*/
 
 // database
 const db = require("./app/models");
@@ -66,35 +65,6 @@ db.sequelize.sync();
  });
 */
 
-
-
-
-// routes
-require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
-require('./app/routes/user_role.routes')(app);
-
-require('./app/routes/tutorial.routes')(app);
-require('./app/routes/event.routes')(app);
-require('./app/routes/collection.routes')(app);
-require('./app/routes/avp.routes')(app);
-require('./app/routes/literature.routes')(app);
-require('./app/routes/equipment.routes')(app);
-require('./app/routes/researcher.routes')(app);
-
-require('./app/routes/clsd_project.routes')(app);
-require('./app/routes/rnd_project.routes')(app);
-require('./app/routes/publication.routes')(app);
-
-require('./app/routes/userinfo.routes')(app);
-
-require('./app/routes/tag.routes')(app);
-
-require('./app/routes/image.routes')(app);
-
-
-
-
 function initial() {
   Role.create({
     id: 1,
@@ -112,6 +82,25 @@ function initial() {
   });
 }
 
+
+
+// routes
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
+require('./app/routes/user_role.routes')(app);
+require('./app/routes/tutorial.routes')(app);
+require('./app/routes/event.routes')(app);
+require('./app/routes/collection.routes')(app);
+require('./app/routes/avp.routes')(app);
+require('./app/routes/literature.routes')(app);
+require('./app/routes/equipment.routes')(app);
+require('./app/routes/researcher.routes')(app);
+require('./app/routes/clsd_project.routes')(app);
+require('./app/routes/rnd_project.routes')(app);
+require('./app/routes/publication.routes')(app);
+require('./app/routes/userinfo.routes')(app);
+require('./app/routes/tag.routes')(app);
+require('./app/routes/image.routes')(app);
 
 
 
