@@ -31,6 +31,7 @@ db.role = require("../models/role.model.js")(sequelize, Sequelize);
 
 db.tutorials = require("../models/tutorial.model.js")(sequelize, Sequelize);
 db.events = require("../models/event.model.js")(sequelize, Sequelize);
+
 db.user_roles = require("../models/user_role.model.js")(sequelize, Sequelize);
 
 db.avps = require("../models/avp.model.js")(sequelize, Sequelize);
@@ -49,6 +50,9 @@ db.publications = require("../models/publication.model.js")(sequelize, Sequelize
 db.userinfos = require("../models/userinfo.model.js")(sequelize, Sequelize);
 
 db.tags = require("../models/tag.model.js")(sequelize, Sequelize);
+
+db.calendars = require("../models/calendar.model.js")(sequelize, Sequelize);
+
 /*
 db.role.belongsToMany(db.user,db.user_roles, {
   through: "user_roles",

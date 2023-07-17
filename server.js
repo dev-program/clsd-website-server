@@ -100,6 +100,10 @@ require('./app/routes/rnd_project.routes')(app);
 require('./app/routes/publication.routes')(app);
 require('./app/routes/userinfo.routes')(app);
 require('./app/routes/tag.routes')(app);
+
+require('./app/routes/calendar.routes')(app);
+
+
 require('./app/routes/image.routes')(app);
 
 
