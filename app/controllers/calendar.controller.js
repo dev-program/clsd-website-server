@@ -21,18 +21,16 @@ const oauth2Client = new google.auth.OAuth2(
 );
 oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-
 exports.create = (req, res) => {
   // Create a Tutorial
   const tutorial = {
     title: req.body.title,
     description: req.body.description,
     published: req.body.published ? req.body.published : false,
-    createdAt: req.body.createdAt,
-    updatedAt: req.body.updatedAt,
-
-
+    createdAt: req.body.createdAt ,
+    updatedAt: req.body.updatedAt ,
   };
+  
   // Save Tutorial in the database
   Tutorial.create(tutorial)
     .then((data) => {
@@ -45,8 +43,8 @@ exports.create = (req, res) => {
           "Some error occurred while creating the Tutorial.",
       });
     });
-
 };
+
 
 
 
@@ -225,79 +223,27 @@ exports.findOnePublic = (req, res) => {
 
 
 
-
+// Update a Tutorial by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Tutorial.findByPk(id)
-    .then((tutorial) => {
-      if (!tutorial) {
-        res.status(404).send({
-          message: `Tutorial with id=${id} not found.`,
-        });
-        return;
-      }
-
-      // Check if a file was uploaded
-      if (req.files && Object.keys(req.files).length > 0) {
-        const file = req.files.file;
-        const fileName = file.name;
-
-        // Move the new file to the server
-        file.mv(`./public/event/${fileName}`, (err) => {
-          if (err) {
-            res.status(500).send({
-              message: "Error updating Tutorial image.",
-            });
-            return;
-          }
-
-          // Update the Tutorial with the new image file
-          tutorial.update({
-            title: req.body.title,
-            description: req.body.description,
-            published: req.body.published ,
-            fileName: fileName,
-            tags: req.body.tags,
-            archived: req.body.archived ,
-          })
-            .then(() => {
-              res.send({
-                message: "Tutorial was updated successfully.",
-              });
-            })
-            .catch((err) => {
-              res.status(500).send({
-                message: "Error updating Tutorial.",
-              });
-            });
+  Tutorial.update(req.body, {
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Tutorial was updated successfully."
         });
       } else {
-        // Update the Tutorial without changing the image
-        tutorial.update({
-          title: req.body.title,
-          description: req.body.description,
-          published: req.body.published ,
-          tags: req.body.tags,
-          archived: req.body.archived ,
-        })
-          .then(() => {
-            res.send({
-              message: "Tutorial was updated successfully.",
-            });
-          })
-          .catch((err) => {
-            res.status(500).send({
-              message: "Error updating Tutorial.",
-            });
-          });
+        res.send({
+          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+        });
       }
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({
-        message: "Error updating Tutorial with id=" + id,
+        message: "Error updating Tutorial with id=" + id
       });
     });
 };
-
-
