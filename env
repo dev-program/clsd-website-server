@@ -7,3 +7,34 @@ DB_POOL_MAX=10
 DB_POOL_MIN=2
 DB_POOL_ACQUIRE=60000
 DB_POOL_IDLE=20000
+
+
+#DB_HOST= localhost
+#DB_USER= root
+#DB_PASS=
+#DB_NAME=db_clsd
+# DB_USER= lspuedu_clsd
+# DB_PASS=LSPUCLSD2023
+# DB_NAME=lspuedu_clsd
+#PORT=3001
+
+
+
+LOCAL_CLIENT=http://localhost:3000
+LOCAL_SERVER_API=http://localhost:3001/api/
+#REMOTE_CLIENT=https://lspu.edu.ph/lake-sustainable-development
+#REMOTE_SERVER_API=https://clsdapi.lspu.edu.ph/
+
+
+REMOTE_CLIENT=https://lspu.edu.ph/lake-sustainable-development
+REMOTE_SERVER_API=https://lspu.edu.ph/lake-sustainable-development
+
+
+
+DB_POOL_MAX=10
+DB_POOL_MIN=2
+DB_POOL_ACQUIRE=60000
+DB_POOL_IDLE=20000
+
+
+CL = {"web":{"client_id":"535909455773-d8nh7t58bboje9obe50cigpg0b908bke.apps.googleusercontent.com","project_id":"project-lake-386300","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"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"}}

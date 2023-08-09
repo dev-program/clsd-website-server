@@ -12,6 +12,7 @@ const { allowedDomains } = config;
 const app = express();
 
 app.use(cors({ origin: allowedDomains }));
+
 //app.use(helmet());
 //app.use(compression());
 
@@ -108,7 +109,7 @@ require('./app/routes/image.routes')(app);
 
 
 
-const PORT = config.PORT || 5001;
+const PORT = config.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
