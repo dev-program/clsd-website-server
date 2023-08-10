@@ -26,7 +26,7 @@ app.use(fileUpload());
 
 // Allow CORS headers
 app.use(function(req, res, next) {
-  res.setHeader("Permissions-Policy", ""); // Remove the unrecognized feature
+  res.setHeader("Permissions-Policy", "*"); // Remove the unrecognized feature
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
